@@ -873,23 +873,24 @@ Vamos a escribir un método para convertir todos los rants a mayúsuculas. Prime
 bc. 
 class Rant < ActiveRecord::Base
   before_save :convert_message_to_uppercase
-
   def convert_message_to_uppercase
   ...
 
 Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en "http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html":http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html y encuentren el helper que necesitan para este ejercicio.
 
-Una vez que lo hicieron prueben escribir un rant en minusculas para ver que pasa.
+
+Una vez que lo hicieron prueben escribir un rant en minúsculas para ver qué pasa.
+Esta vez utilicen un método de Ruby? Miren en: "http://www.ruby-doc.org/core-1.9.2/String.html":http://www.ruby-doc.org/core-1.9.2/String.html y busquen si hay un método de instancia que permite pasar a minúsculas un String.
 
 h1. Ejercicios
 
-Pueden querer trabajar con sus datos en algún otro formato. Vuelvan a la consola de Rails y escriban un programa que cree un hash que contenga mensajes rant junto con el nombre del usuario que lo escribio.
+Pueden querer trabajar con sus datos en algún otro formato. Vuelvan a la consola de Rails y escriban un programa que cree un hash que contenga mensajes rant junto con el nombre del usuario que lo escribió.
 
 Como era que se creaba un Hash?
 * Vimos @Hash.new@ pero también se puede crear con @{}@.
 * Try @new_hash = {}@
 
-El resultado deberia ser algo como:
+El resultado debería ser algo como:
 
 bc. => {"RANTING!"=>"caylee", "WTF"=>"audrey"}
 
@@ -897,7 +898,7 @@ Pueden usar un iterador para mostrarlo como una serie de strings formateados?
 
 h1. Callbacks
 
-El código que aparece en @before_save@ usa un *callback*. Rails define varios callbacks que nos permiten cambiar la entrada a un modelo antes o despues de acciones como save, create, update y delete.
+El código que aparece en @before_save@ usa un *callback*. Rails define varios callbacks que nos permiten cambiar la entrada a un modelo antes o después de acciones como save, create, update y delete.
 
 bc. before_save :geocode_address
 after_create :notify_admins
@@ -905,15 +906,21 @@ before_validate :check_over_some_other_details
 
 h1. Control de Calidad
 
-Las validaciones dan un wrapper sencillo para chequear si un atributo en particular está presente, si esta en el formato correcto u otros requerimientos antes que la aplicación guarde los datos. La aplicación de microblog ya tiene algunos de estos. Miren en los modelos Rant y Iser para ver cuales hemos incluido. 
+Las validaciones dan un wrapper sencillo para chequear si un atributo en particular está presente, si esta en el formato correcto u otros requerimientos antes que la aplicación guarde los datos. La aplicación de microrant ya tiene algunos de éstos. Miren en los modelos @Rant@ y @User@ para ver cuáles hemos incluído. 
 
 Pueden pensar de algunas otras validaciones que podamos querer usar? Intenten cambiar el largo de un mensaje de Rant válido.
 
 h1. Mostrando los Datos
 
-Rails automaticamente crea vistas con contenido cuando usas el comando @scaffold@. Miren lo que tenemos en /app/views
+Rails automáticamente crea vistas con contenido usando el comando @scaffold@. Miren lo que tenemos en /app/views
 
-Estos archivos usan el sistema de templating llamado ERB que convierte lineas de Ruby en la vista en HTML estatico para desplegar. Una linea tipica de ERB podria ser como esto:
+Estos archivos usan el sistema de templating llamado ERB que convierte líneas de Ruby en la vista en HTML estático para desplegar. Una línea típica de ERB podria ser como esto:
+
+@5 + 1 = <%= 5 + 1 %>@
+
+Se vería así:
+
+@5 + 1 = 6@
 
 Documentación sobre la sintaxis de ERB: "http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html":http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html
 
@@ -921,11 +928,11 @@ h1. Ejercicios
 
 El sistema de scaffolding es rápido de usar, pero no siempre lindo. Nuestra lista de rants tiene al @user_id@ para la persona que lo dijo pero no su nombre. Cambien eso.
 
-Ir a /app/views/rants/ y abran el archivo index.html. Por defecto, el scaffolder hace que la vista index muestre una lista de registros relacionados al tipo del modelo. Encuentren la linea que muestra el id del usuario y cambienle para mostrar el nombre de usuario.
+Ir a @/app/views/rants/@ y abran el archivo @index.html@. Por defecto, el scaffolder hace que la vista index muestre una lista de registros relacionados al tipo del modelo. Encuentren la línea que muestra el id del usuario y cámbienla para mostrar el nombre de usuario.
 `
 h1. Ejercicios
 
-En la pagina index de usuarios, agreguemos una columna a la table para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado @count@ que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo @User.count@ o @Rants.count@.
+En la página @index@ de usuarios, agreguemos una columna a la tabla para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado @count@ que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo @User.count@ o @Rants.count@.
 
 Esto también funciona mediante asociaciones has_many, por lo que dado un registro de usuario, pueden probar @user.kittens.count@ o @user.books.count@ (si las asociaciones existen) o ...
 
