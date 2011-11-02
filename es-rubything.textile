@@ -778,9 +778,9 @@ h1. Microrant
 * Luego ir a /rants/new y crear un nuevo rant
 ** Rants también pueden ser editados y borrados!
 
-* Que hay detras de escenas?
+* Qué hay detrás de escenas?
 ** Rails trae clases que nos permiten obtener y maniuplar datos fácilmente
-** La logica de la aplicación se escribe en Ruby común y corrriente, y un modulo llamado ActiveRecord hace todo el trabajo de conección a la base de datos
+** La lógica de la aplicación se escribe en Ruby común y corrriente, y un modulo llamado ActiveRecord hace todo el trabajo de conexión a la base de datos
 
 h1. En el Backstage: la base de datos
 
