@@ -784,7 +784,9 @@ h1. Microrant
 
 h1. En el Backstage: la base de datos
 
-% Hablar algo sobre ActiveRecord, ORM y dbms. Mysql, postgresql, sqlite3, nosql databases... $
+* ORM: Mapeo de Objetos a Relaciones.
+* ActiveRecord
+* Soporta muchos motores de Bases de Datos
 
 h1. En La Consola
 
@@ -831,7 +833,7 @@ rant.save
 No tuvimos que setearle el valor de @id@ al mensaje!
 Esto fue automaticamente hecho por @new@. 
 
-Guardamos (@save@) el registro cuando terminamos, para poder crearlo, al igual que cuando estabamos editandolo.
+Guardamos (@save@) el registro cuando terminamos, para poder crearlo, al igual que cuando estabamos editándolo.
 
 h1. En la Consola
 
@@ -857,20 +859,22 @@ end
 class User < ActiveRecord::Base
 
   has_many :rants
-  
+
   validates :name, :presence => true
 
 end
 
 h1. Ejercicios
 
-Algunas personas estan escribiendo rants en minusculas! 
+Algunas personas están escribiendo rants en minúsculas! 
 
-Vamos a escribir un metodo para convertir todos los rants a mayúsuculas. Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.
+Vamos a escribir un método para convertir todos los rants a mayúsuculas. Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.
 
-bc. class Rant < ActiveRecord::Base
-before_save :convert_message_to_uppercase
-def convert_message_to_uppercase
+bc. 
+class Rant < ActiveRecord::Base
+  before_save :convert_message_to_uppercase
+
+  def convert_message_to_uppercase
   ...
 
 Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en "http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html":http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html y encuentren el helper que necesitan para este ejercicio.
