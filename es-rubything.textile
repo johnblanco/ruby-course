@@ -941,9 +941,24 @@ h1. Ejercicio 3 (ERB)
 
 En la página @index@ de usuarios, agreguemos una columna a la tabla para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado @count@ que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo @User.count@ o @Rants.count@.
 
-h1. Relaciones
+h1. Layouts
 
-Esto también funciona mediante asociaciones has_many, por lo que dado un registro de usuario, pueden probar @user.kittens.count@ o @user.books.count@ (si las asociaciones existen) o ...
+Ir a @app/views/layouts/application.html@
+
+* En @application.html@ está el template de la aplicación.
+* Esta página es la que permite tener un esquema html común a todas las paginas
+* El método @yield@ pasa la ejecución al template que se quiere ver
+* En este caso el template que hemos estado viendo es @index.html@
+
+h2. Layouts Especificos
+
+* Crear un archivo en @app/views/layouts/users.html@ y escribir:
+bc..
+<h1> Esto es solo para los Users </h1>
+<%= yield %>
+
+
+* Ejemplo de convención sobre configuración
 
 h1. Routes
 
