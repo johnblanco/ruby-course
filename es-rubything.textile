@@ -955,7 +955,7 @@ h2. Layouts Especificos
 * Crear un archivo en @app/views/layouts/users.html@ y escribir:
 bc..
 <h1> Esto es solo para los Users </h1>
-<%= yield %>
+< %= yield %>
 
 
 * Ejemplo de convención sobre configuración

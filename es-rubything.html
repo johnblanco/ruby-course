@@ -943,7 +943,25 @@ h1. Ejercicio 2 (ERB)</p>
 
 </div>
 <div class='slide '>
-<h1>Relaciones</h1><p>Esto también funciona mediante asociaciones has_many, por lo que dado un registro de usuario, pueden probar <code>user.kittens.count</code> o <code>user.books.count</code> (si las asociaciones existen) o &#8230;</p>
+<h1>Layouts</h1><p>Ir a <code>app/views/layouts/application.html</code></p>
+<ul>
+	<li>En <code>application.html</code> está el template de la aplicación.</li>
+	<li>Esta página es la que permite tener un esquema html común a todas las paginas</li>
+	<li>El método <code>yield</code> pasa la ejecución al template que se quiere ver</li>
+	<li>En este caso el template que hemos estado viendo es <code>index.html</code></li>
+</ul>
+<h2>Layouts Especificos</h2>
+<ul>
+	<li>Crear un archivo en <code>app/views/layouts/users.html</code> y escribir:
+bc..
+
+</div>
+<div class='slide '>
+<h1> Esto es solo para los Users </h1>&lt; %= yield %&gt;</li>
+</ul>
+<ul>
+	<li>Ejemplo de convención sobre configuración</li>
+</ul>
 
 </div>
 <div class='slide '>
