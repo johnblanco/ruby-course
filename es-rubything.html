@@ -776,7 +776,7 @@ end</code>
 
 </div>
 <div class='slide '>
-<h1>Un Ampliación en Rails de Ejemplo</h1><p>Para empezar tipear:</p>
+<h1>Un Apliación en Rails de Ejemplo</h1><p>Escribir en una consola:</p>
 <ol>
 	<li><code>cd microrant</code></li>
 	<li><code>bundle install</code></li>
@@ -863,34 +863,36 @@ Esto fue automaticamente hecho por <code>new</code>.</p>
 
 </div>
 <div class='slide '>
-<h1>Mirando a los Modelos</h1><p>Abrir los archivos user.rb y rant.rb en el directorio model.</p>
-<pre><code>class Rant &lt; ActiveRecord::Base</code>
-
-<code>  belongs_to :user</code>
+<h1>Mirando a los Modelos</h1><p>Abrir los archivos user.rb y rant.rb en el directorio <code>model/</code></p>
+<pre><code>class Rant &lt; ActiveRecord::Base
+  belongs_to :user</code>
 
 <code>  validates :user, :presence =&gt; true
-  validates :message, :presence =&gt; true, :length =&gt; { :maximum =&gt; 10 }</code>
+  validates :message, :presence =&gt; true, :length =&gt; { :maximum =&gt; 10 }
+end</code></pre>
 
-<code>end</code>
+</div>
+<div class='slide '>
+<h1>Mirando a los Modelos (User)</h1><pre><code>class User &lt; ActiveRecord::Base
+  has_many :rants</code>
 
-<code>class User &lt; ActiveRecord::Base</code>
-
-<code>  has_many :rants</code>
-
-<code>  validates :name, :presence =&gt; true</code>
-
-<code>end</code></pre>
+<code>  validates :name, :presence =&gt; true
+end</code></pre>
 
 </div>
 <div class='slide '>
 <h1>Ejercicios</h1><p>Algunas personas están escribiendo rants en minúsculas!</p>
-<p>Vamos a escribir un método para convertir todos los rants a mayúsuculas. Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.</p>
+<p>Vamos a escribir un método para convertir todos los rants a mayúsuculas. 
+Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.</p>
 <pre><code>
 class Rant &lt; ActiveRecord::Base
   before_save :convert_message_to_uppercase
   def convert_message_to_uppercase
   ...</code></pre>
-<p>Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en <a href="http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html">http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html</a> y encuentren el helper que necesitan para este ejercicio.</p>
+
+</div>
+<div class='slide '>
+<h1>Ejercicios</h1><p>Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en <a href="http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html">http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html</a> y encuentren el helper que necesitan para este ejercicio.</p>
 <p>Una vez que lo hicieron prueben escribir un rant en minúsculas para ver qué pasa.
 Esta vez utilicen un método de Ruby? Miren en: <a href="http://www.ruby-doc.org/core-1.9.2/String.html">http://www.ruby-doc.org/core-1.9.2/String.html</a> y busquen si hay un método de instancia que permite pasar a minúsculas un String.</p>
 
@@ -929,12 +931,19 @@ before_validate :check_over_some_other_details</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Ejercicios</h1><p>El sistema de scaffolding es rápido de usar, pero no siempre lindo. Nuestra lista de rants tiene al <code>user_id</code> para la persona que lo dijo pero no su nombre. Cambien eso.</p>
+<h1>Ejercicio 1 (ERB)</h1><p>El sistema de scaffolding es rápido de usar, pero no siempre lindo. Nuestra lista de rants tiene al <code>user_id</code> para la persona que lo dijo pero no su nombre. Cambien eso.</p>
 <p>Ir a <code>/app/views/rants/</code> y abran el archivo <code>index.html</code>. Por defecto, el scaffolder hace que la vista index muestre una lista de registros relacionados al tipo del modelo. Encuentren la línea que muestra el id del usuario y cámbienla para mostrar el nombre de usuario.
 `
-h1. Ejercicios</p>
-<p>En la página <code>index</code> de usuarios, agreguemos una columna a la tabla para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado <code>count</code> que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo <code>User.count</code> o <code>Rants.count</code>.</p>
-<p>Esto también funciona mediante asociaciones has_many, por lo que dado un registro de usuario, pueden probar <code>user.kittens.count</code> o <code>user.books.count</code> (si las asociaciones existen) o &#8230;</p>
+h1. Ejercicio 2 (ERB)</p>
+<p>Modifiquen el archivo <code>index.html</code> de rants, para que muestre &#8220;No hay rants&#8221; en vez de la tabla, en caso de que no existan rants.</p>
+
+</div>
+<div class='slide '>
+<h1>Ejercicio 3 (ERB)</h1><p>En la página <code>index</code> de usuarios, agreguemos una columna a la tabla para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado <code>count</code> que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo <code>User.count</code> o <code>Rants.count</code>.</p>
+
+</div>
+<div class='slide '>
+<h1>Relaciones</h1><p>Esto también funciona mediante asociaciones has_many, por lo que dado un registro de usuario, pueden probar <code>user.kittens.count</code> o <code>user.books.count</code> (si las asociaciones existen) o &#8230;</p>
 
 </div>
 <div class='slide '>
@@ -950,6 +959,30 @@ h1. Ejercicios</p>
 	<li>Responde al request HTTP del navegador y renderea el tipo pedido de salida (en nuestros scaffolds es html o xml pero otros como json pueden ser facilmente agregandos &#8212; API instantanea!)</li>
 	<li>También en el controlador es donde se deberia agregar los controles de acceso, como por ejemplo solo permitir que el usuario que escribio el rant pueda eliminarlo.</li>
 </ul>
+
+</div>
+<div class='slide '>
+<h1>Ejercicio</h1><p>Modificar el código para: no permitir escribir de 3 rants por dia.</p>
+
+</div>
+<div class='slide '>
+<h1>Ejercicio &#8211; Solucion (Parte I)</h1><ul>
+	<li>Agregar el siguiente código en el <code>users_controller.rb</code> de la carpeta <code>app/controllers</code>
+bc..
+  before_filter :authenticate, :only =&gt; [:new, :create]</li>
+</ul>
+def authenticate
+user = User.find(params[:id])
+if user.rants.where(created_at &gt; 1.day.ago).count &gt; 3
+redirect_to :index, :notice =&gt; &#8220;Has escrito demasiados rants hoy!&#8221;
+end
+end
+
+</div>
+<div class='slide '>
+<h1>Ejercicio &#8211; Solución (Parte II)
+En <code>app/views/layouts/application.html.erb</code> agregar arriba de <code>yield</code></h1><p>bc..
+  <p></p></p>
 
 </div>
 <div class='slide '>

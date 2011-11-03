@@ -761,9 +761,9 @@ h1. Introduccion a Rails
 * MVC separa diferentes partes de la lógica de la aplicación en secciones en función de para que son usadas. En Rails esto está dividido en diferentes directorios.
 * Rails valora "convención sobre configuración"-- la plataforma toma ciertas assumptions de como vas a construir la aplicación. Esto hace que algunas las tareas que sigan sus convenciones sean muy sencillas y las que no sigan las convenciones de Rails lleven un poco más de trabajo.
 
-h1. Un Ampliación en Rails de Ejemplo
+h1. Un Apliación en Rails de Ejemplo
 
-Para empezar tipear:
+Escribir en una consola:
 
 # @cd microrant@
 # @bundle install@
@@ -788,6 +788,7 @@ h1. En el Backstage: la base de datos
 * ORM: Mapeo de Objetos a Relaciones.
 * ActiveRecord
 * Soporta muchos motores de Bases de Datos
+
 
 h1. En La Consola
 
@@ -846,36 +847,37 @@ De esta forma no tenemos que usar save para guardar pues usamos @create@--quien 
 
 h1. Mirando a los Modelos
 
-Abrir los archivos user.rb y rant.rb en el directorio model.
+Abrir los archivos user.rb y rant.rb en el directorio @model/@
 
 bc.. class Rant < ActiveRecord::Base
-
   belongs_to :user
 
   validates :user, :presence => true
   validates :message, :presence => true, :length => { :maximum => 10 }
-
 end
 
-class User < ActiveRecord::Base
+h1. Mirando a los Modelos (User)
 
+bc.. class User < ActiveRecord::Base
   has_many :rants
 
   validates :name, :presence => true
-
 end
 
 h1. Ejercicios
 
-Algunas personas están escribiendo rants en minúsculas! 
+Algunas personas están escribiendo rants en minúsculas!
 
-Vamos a escribir un método para convertir todos los rants a mayúsuculas. Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.
+Vamos a escribir un método para convertir todos los rants a mayúsuculas. 
+Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.
 
-bc. 
+bc.. 
 class Rant < ActiveRecord::Base
   before_save :convert_message_to_uppercase
   def convert_message_to_uppercase
   ...
+
+h1. Ejercicios
 
 Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en "http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html":http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html y encuentren el helper que necesitan para este ejercicio.
 
@@ -925,15 +927,21 @@ Se vería así:
 
 Documentación sobre la sintaxis de ERB: "http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html":http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html
 
-h1. Ejercicios
+h1. Ejercicio 1 (ERB)
 
 El sistema de scaffolding es rápido de usar, pero no siempre lindo. Nuestra lista de rants tiene al @user_id@ para la persona que lo dijo pero no su nombre. Cambien eso.
 
 Ir a @/app/views/rants/@ y abran el archivo @index.html@. Por defecto, el scaffolder hace que la vista index muestre una lista de registros relacionados al tipo del modelo. Encuentren la línea que muestra el id del usuario y cámbienla para mostrar el nombre de usuario.
 `
-h1. Ejercicios
+h1. Ejercicio 2 (ERB)
+
+Modifiquen el archivo @index.html@ de rants, para que muestre "No hay rants" en vez de la tabla, en caso de que no existan rants.
+
+h1. Ejercicio 3 (ERB)
 
 En la página @index@ de usuarios, agreguemos una columna a la tabla para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado @count@ que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo @User.count@ o @Rants.count@.
+
+h1. Relaciones
 
 Esto también funciona mediante asociaciones has_many, por lo que dado un registro de usuario, pueden probar @user.kittens.count@ o @user.books.count@ (si las asociaciones existen) o ...
 
@@ -951,6 +959,29 @@ Qué hace un controlador?
 * Conecta la vista y el modelo, llamando a metodos en los modelos para obtener los datos necesitados en la vista y permitiendote acceder parametros de entrada como los de un formulario.
 * Responde al request HTTP del navegador y renderea el tipo pedido de salida (en nuestros scaffolds es html o xml pero otros como json pueden ser facilmente agregandos -- API instantanea!)
 * También en el controlador es donde se deberia agregar los controles de acceso, como por ejemplo solo permitir que el usuario que escribio el rant pueda eliminarlo.
+
+
+h1. Ejercicio
+
+Modificar el código para: no permitir escribir de 3 rants por dia.
+
+h1. Ejercicio - Solucion (Parte I)
+* Agregar el siguiente código en el @users_controller.rb@ de la carpeta @app/controllers@
+bc..
+  before_filter :authenticate, :only => [:new, :create]
+
+  def authenticate
+    user = User.find(params[:id])
+    if user.rants.where(created_at > 1.day.ago).count > 3
+      redirect_to :index, :notice => "Has escrito demasiados rants hoy!"
+    end
+  end
+
+h1. Ejercicio - Solución (Parte II)
+En @app/views/layouts/application.html.erb@ agregar arriba de @yield@
+
+bc..
+  <p><%=  %></p>
 
 h1. Picando tu propio código
 
