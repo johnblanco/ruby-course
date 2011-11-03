@@ -109,14 +109,17 @@ for princexml (CSS3 paged media support)
 	</ul></li>
 	<li>Una introducción a Rails
 	<ul>
-		<li>&#8230;</li>
+		<li>Un tour desde la consola de Rails</li>
+		<li>Modelos</li>
+		<li>Vistas</li>
+		<li>Controladores</li>
 	</ul></li>
 </ul>
 
 </div>
 <div class='slide '>
 <h1>Ruby</h1><ul>
-	<li>Originado en Japon a mediados de los 90, su creador es Yukihiro &#8220;Matz&#8221; Matsumoto. Está inspirado en Perl, Lisp entre otros lenguajes</li>
+	<li>Originado en Japón a mediados de los 90, su creador es Yukihiro &#8220;Matz&#8221; Matsumoto. Está inspirado en Perl, Lisp entre otros lenguajes</li>
 	<li>&#8220;I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python. That&#8217;s why I decided to design my own language&#8221;.</li>
 	<li>Ruby es un lenguaje
 	<ul>
@@ -821,16 +824,22 @@ end</code>
 	</ul></li>
 </ul>
 <ul>
-	<li>Que hay detras de escenas?
+	<li>Qué hay detrás de escenas?
 	<ul>
 		<li>Rails trae clases que nos permiten obtener y maniuplar datos fácilmente</li>
-		<li>La logica de la aplicación se escribe en Ruby común y corrriente, y un modulo llamado ActiveRecord hace todo el trabajo de conección a la base de datos</li>
+		<li>La lógica de la aplicación se escribe en Ruby común y corrriente, y un modulo llamado ActiveRecord hace todo el trabajo de conexión a la base de datos</li>
 	</ul></li>
 </ul>
 
 </div>
 <div class='slide '>
-<h1>En el Backstage: la base de datos</h1></div>
+<h1>En el Backstage: la base de datos</h1><ul>
+	<li>ORM: Mapeo de Objetos a Relaciones.</li>
+	<li>ActiveRecord</li>
+	<li>Soporta muchos motores de Bases de Datos</li>
+</ul>
+
+</div>
 <div class='slide '>
 <h1>En La Consola</h1><ul>
 	<li>Cerrar el servidor Rails con Ctrl-C</li>
@@ -871,7 +880,7 @@ rant.message = "WHAT IS TH"
 rant.save</code></pre>
 <p>No tuvimos que setearle el valor de <code>id</code> al mensaje!
 Esto fue automaticamente hecho por <code>new</code>.</p>
-<p>Guardamos (<code>save</code>) el registro cuando terminamos, para poder crearlo, al igual que cuando estabamos editandolo.</p>
+<p>Guardamos (<code>save</code>) el registro cuando terminamos, para poder crearlo, al igual que cuando estabamos editándolo.</p>
 
 </div>
 <div class='slide '>
@@ -894,59 +903,64 @@ Esto fue automaticamente hecho por <code>new</code>.</p>
 <code>class User &lt; ActiveRecord::Base</code>
 
 <code>  has_many :rants</code>
-  
+
 <code>  validates :name, :presence =&gt; true</code>
 
 <code>end</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Ejercicios</h1><p>Algunas personas estan escribiendo rants en minusculas!</p>
-<p>Vamos a escribir un metodo para convertir todos los rants a miyusuculas Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.</p>
-<pre><code>class Rant &lt; ActiveRecord::Base
-before_save :convert_message_to_uppercase
-def convert_message_to_uppercase
+<h1>Ejercicios</h1><p>Algunas personas están escribiendo rants en minúsculas!</p>
+<p>Vamos a escribir un método para convertir todos los rants a mayúsuculas. Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.</p>
+<pre><code>
+class Rant &lt; ActiveRecord::Base
+  before_save :convert_message_to_uppercase
+  def convert_message_to_uppercase
   ...</code></pre>
 <p>Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en <a href="http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html">http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html</a> y encuentren el helper que necesitan para este ejercicio.</p>
-<p>Una vez que lo hicieron prueben escribir un rant en minusculas para ver que pasa.</p>
+<p>Una vez que lo hicieron prueben escribir un rant en minúsculas para ver qué pasa.
+Esta vez utilicen un método de Ruby? Miren en: <a href="http://www.ruby-doc.org/core-1.9.2/String.html">http://www.ruby-doc.org/core-1.9.2/String.html</a> y busquen si hay un método de instancia que permite pasar a minúsculas un String.</p>
 
 </div>
 <div class='slide '>
-<h1>Ejercicios</h1><p>Pueden querer trabajar con sus datos en algún otro formato. Vuelvan a la consola de Rails y escriban un programa que cree un hash que contenga mensajes rant jungo con el nombre del usuario que lo escribio.</p>
+<h1>Ejercicios</h1><p>Pueden querer trabajar con sus datos en algún otro formato. Vuelvan a la consola de Rails y escriban un programa que cree un hash que contenga mensajes rant junto con el nombre del usuario que lo escribió.</p>
 <p>Como era que se creaba un Hash?</p>
 <ul>
 	<li>Vimos <code>Hash.new</code> pero también se puede crear con <code>{}</code>.</li>
 	<li>Try <code>new_hash = {}</code></li>
 </ul>
-<p>El resultado deberia ser algo como:</p>
+<p>El resultado debería ser algo como:</p>
 <pre><code>=&gt; {"RANTING!"=&gt;"caylee", "WTF"=&gt;"audrey"}</code></pre>
 <p>Pueden usar un iterador para mostrarlo como una serie de strings formateados?</p>
 
 </div>
 <div class='slide '>
-<h1>Callbacks</h1><p>El código que aparece en <code>before_save</code> usa un <strong>callback</strong>. Rails define varios callbacks que nos permiten cambiar la entrada a un modelo antes o despues de acciones como save, create, update y delete.</p>
+<h1>Callbacks</h1><p>El código que aparece en <code>before_save</code> usa un <strong>callback</strong>. Rails define varios callbacks que nos permiten cambiar la entrada a un modelo antes o después de acciones como save, create, update y delete.</p>
 <pre><code>before_save :geocode_address
 after_create :notify_admins
 before_validate :check_over_some_other_details</code></pre>
 
 </div>
 <div class='slide '>
-<h1>Control de Calidad</h1><p>Las validaciones dan un wrapper sencillo para chequear si un atributo en particular está presente, si esta en el formato correcto u otros requerimientos antes que la aplicación guarde los datos. La aplicación de microblog ya tiene algunos de estos. Miren en los modelos Rant y Iser para ver cuales hemos incluido.</p>
+<h1>Control de Calidad</h1><p>Las validaciones dan un wrapper sencillo para chequear si un atributo en particular está presente, si esta en el formato correcto u otros requerimientos antes que la aplicación guarde los datos. La aplicación de microrant ya tiene algunos de éstos. Miren en los modelos <code>Rant</code> y <code>User</code> para ver cuáles hemos incluído.</p>
 <p>Pueden pensar de algunas otras validaciones que podamos querer usar? Intenten cambiar el largo de un mensaje de Rant válido.</p>
 
 </div>
 <div class='slide '>
-<h1>Mostrando los Datos</h1><p>Rails automaticamente crea vistas con contenido cuando usas el comando <code>scaffold</code>. Miren lo que tenemos en /app/views</p>
-<p>Estos archivos usan el sistema de templating llamado ERB que convierte lineas de Ruby en la vista en HTML estatico para desplegar. Una linea tipica de ERB podria ser como esto:</p>
+<h1>Mostrando los Datos</h1><p>Rails automáticamente crea vistas con contenido usando el comando <code>scaffold</code>. Miren lo que tenemos en /app/views</p>
+<p>Estos archivos usan el sistema de templating llamado ERB que convierte líneas de Ruby en la vista en HTML estático para desplegar. Una línea típica de ERB podria ser como esto:</p>
+<p><code>5 + 1 = 6</code></p>
+<p>Se vería así:</p>
+<p><code>5 + 1 = 6</code></p>
 <p>Documentación sobre la sintaxis de ERB: <a href="http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html">http://ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html</a></p>
 
 </div>
 <div class='slide '>
 <h1>Ejercicios</h1><p>El sistema de scaffolding es rápido de usar, pero no siempre lindo. Nuestra lista de rants tiene al <code>user_id</code> para la persona que lo dijo pero no su nombre. Cambien eso.</p>
-<p>Ir a /app/views/rants/ y abran el archivo index.html. Por defecto, el scaffolder hace que la vista index muestre una lista de registros relacionados al tipo del modelo. Encuentren la linea que muestra el id del usuario y cambienle para mostrar el nombre de usuario.
+<p>Ir a <code>/app/views/rants/</code> y abran el archivo <code>index.html</code>. Por defecto, el scaffolder hace que la vista index muestre una lista de registros relacionados al tipo del modelo. Encuentren la línea que muestra el id del usuario y cámbienla para mostrar el nombre de usuario.
 `
 h1. Ejercicios</p>
-<p>En la pagina index de usuarios, agreguemos una columna a la table para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado <code>count</code> que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo <code>User.count</code> o <code>Rants.count</code>.</p>
+<p>En la página <code>index</code> de usuarios, agreguemos una columna a la tabla para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado <code>count</code> que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo <code>User.count</code> o <code>Rants.count</code>.</p>
 <p>Esto también funciona mediante asociaciones has_many, por lo que dado un registro de usuario, pueden probar <code>user.kittens.count</code> o <code>user.books.count</code> (si las asociaciones existen) o &#8230;</p>
 
 </div>

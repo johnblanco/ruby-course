@@ -59,11 +59,14 @@ h1. Qué Temas Vamos a Cubrir?
 ** Expresiones regulares
 ** Excepciones
 * Una introducción a Rails
-** ...
+** Un tour desde la consola de Rails
+** Modelos
+** Vistas
+** Controladores
 
 h1. Ruby
 
-* Originado en Japon a mediados de los 90, su creador es Yukihiro "Matz" Matsumoto. Está inspirado en Perl, Lisp entre otros lenguajes
+* Originado en Japón a mediados de los 90, su creador es Yukihiro "Matz" Matsumoto. Está inspirado en Perl, Lisp entre otros lenguajes
 * "I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python. That's why I decided to design my own language".
 * Ruby es un lenguaje
 ** dinamico
