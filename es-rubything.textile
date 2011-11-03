@@ -362,7 +362,7 @@ Como averiguamos la clase origen de un objeto? Sólo hay que preguntarle!
 @40.class@
 
 
-h1. Clases & Metodos
+h1. Clases & Métodos
 
 Aprendamos la sintaxis mediante un ejemplo:
 
@@ -375,7 +375,7 @@ p. Qué podemos hacer con @Counter@?
 
 % Step 1 %
 
-h1. Clases & Metodos
+h1. Clases & Métodos
 
 Aprendemos la sintaxis mediante un ejemplo:
 
@@ -392,7 +392,7 @@ c.value
 
 Qué pasa? Que es lo que hace @attr_accessor :value@ ?
 
-h1. Clases & Metodos
+h1. Clases & Métodos
 
 Aprendemos la sintaxis mediante un ejemplo:
 
@@ -402,7 +402,6 @@ bc.. class Counter
   def initialize
     @value = 0
   end
-
 end
 
 p. Nuevamente
@@ -414,7 +413,7 @@ c.value
 
 % Step 2 %
 
-h1. Clases & Metodos
+h1. Clases & Métodos
 
 Aprendamos la sintaxis mediante un ejemplo:
 
@@ -428,14 +427,14 @@ bc.. class Counter
   def increment
     @value = @value + 1
   end
-
 end
 
-h1. Clases & Metodos
+h1. Clases & Métodos
 
 Estas definiciones de un metodo son equivalentes:
 
-bc.. def increment x
+bc.. 
+  def increment x
     x + 1
   end
 
@@ -444,7 +443,6 @@ bc.. def increment x
   end
 
   def increment(x); x + 1; end
-end
 
 h1. Clases
 
@@ -504,7 +502,7 @@ h1. Clases
 Si aún no lo han hecho, escriban la clase Counter en su editor favorito y guardenlo en disco. Levantemoslo en la consola de ruby.
 
 bc. class Counter
-  attr_accessor :value</code>
+  attr_accessor :value
   def initialize
     @value = 0
   end
@@ -519,7 +517,7 @@ En la consola: @require 'path_to_your_file'@
 
 h1. Modulos
 
-Un modulo es básicamente una clase que no puede ser instanciada. 
+Un módulo es básicamente una clase que no puede ser instanciada. 
 
 h1. Control de Acceso
 
