@@ -53,7 +53,7 @@ h1. Qué Temas Vamos a Cubrir?
 * Ruby	
 * Instalando el ambiente de trabajo
 * Sintaxis y operaciones simples en Ruby
-** Objetos, clases, modulos y metodos
+** Objetos, clases, modulos y métodos
 ** Testing en Ruby
 ** Bloques y estructuras de control
 ** Expresiones regulares
@@ -151,8 +151,6 @@ h1.  Abriendo el interprete de Ruby
 
 Abrir una terminal y ejecutar irb. 
 
-Desde hace poco también existe pry y pueden bajarlo desde XX (diferencia???
-
 Jugar un poco:
 
 bc. 1
@@ -175,14 +173,14 @@ h1. Datos Básicos de Ruby
 |Arrays  | @[1, 7, "cake"]@ |
 |Hashes  | @{:chicken => "chicken", :sillyexample => :chicken}@ |
 
-En Ruby __casi todo__ es un objeto. A un objeto se le puede neviar los mensajes a los que el objeto puede responder. A grandes rasgos a esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
+En Ruby __casi todo__ es un objeto. A un objeto se le puede enviar los mensajes a los que el objeto puede responder. A grandes rasgos a esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
 Juega con la terminal!
 
 % Esto no está muy claro <<--- MIRAR COMO INCLUIR LA EIGENCLASS
 % Las estructuras de control no son objetos ni mensajes que se envian a otros objetos, por eso la aclaracion de __casi todo__, en algún que otro lenguaje esto si se cumple.
 % La definicion de Duck Typing no es "El tipo del objeto es definido por lo que el objeto puede hacer".
 % Duck Typing indica que a un objeto le podemos enviar los mensajes a los que el objeto puede responder, sin importar el tipo del objeto. Comunmente se dice: "Si camina como un pato y habla como un pato, entonces es un pato"
-% Si por tipo del objeto entendemos "Lo que el objeto puede hacer", entonces cabe la pregunta "Que es lo que puede hacer el objeto?", la respuesta sería: "Todo lo que hace es recibir mensajes, los mensajes que puede recibir estan determinados por los metodos del objeto". Quién determina los métodos del objeto? La clase del objeto.
+% Si por tipo del objeto entendemos "Lo que el objeto puede hacer", entonces cabe la pregunta "Que es lo que puede hacer el objeto?", la respuesta sería: "Todo lo que hace es recibir mensajes, los mensajes que puede recibir estan determinados por los métodos del objeto". Quién determina los métodos del objeto? La clase del objeto.
 
 % Cuál es la clase de un objeto? Depende, puede ser la clase a partir de la cual se creó el objeto, o la clase Singleton del objeto (clase Eigen, es una clase anónima). 
 % O sea que el tipo de un objeto es la clase del objeto.
@@ -226,7 +224,7 @@ Y @"puppy".include?("p")@?
 
 h1. Interpolación de Expresiones
 
-Algo que Ruby hace con strings entre comillas dobles es interpolacion de expresiones. Es decir, dentro de un string la secuencia #{expression} es reemplazada por el valor de la expresión.
+Algo que Ruby hace con strings entre comillas dobles es interpolacion de expresiones. Es decir, dentro de un string la secuencia @#{expression}@ es reemplazada por el valor de la expresión.
 
 Por ejemplo, prueba
 
@@ -253,27 +251,27 @@ h1. Variables
 
 Intenten.
 
-bc. awesomelist = [5,2,1,8]
-awesomelist.sort!
-awesomelist
+bc. awesome_list = [5,2,1,8]
+awesome_list.sort!
+awesome_list
 
 Como paso esto? Acciones que terminen con un @!@ "cambian" los datos!
 Esto es una convención de Ruby, pero una buena a seguir.
 
 h1. Convenciones para Variables y Alcance
 
-* locales:  comienzan con minuscula o guion bajo
+* locales:  comienzan con minúscula o guión bajo
 * globales: comienzan con $
 * de instancia: comienzan con @
 * de clase: comienzan con @@
-* de más de una palabra se escriben con guion bajo. Ej. user_name
-* constantes en mayuscula
+* de más de una palabra se escriben con guión bajo. Ej. user_name
+* constantes en mayúscula
 
-Hay tres lugares donde el alcance cambia: las definiciones de clases (class), las definiciones de modulos (module) y los metodos (def)
+Hay tres lugares donde el alcance cambia: las definiciones de clases (@class@), las definiciones de modulos (@module@) y los métodos (@def@)
 
-h1. Simbolos
+h1. Símbolos
 
-Son etiquetas que no hay que pre-declarar y que son únicas. Empieza con @:@ y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el simbolo va a tener el mismo valor. Son usualmente usados como llaves de un hash.
+Son etiquetas que no hay que pre-declarar y que son únicas. Empieza con @:@ y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el símbolo va a tener el mismo valor. Son usualmente usados como llaves de un hash.
 
 Por ejemplo:
 
@@ -282,7 +280,7 @@ Por ejemplo:
 
 h1. Hashes
 
-* También es un tipo built-in. 
+* También es un tipo nativo del lenguaje. 
 * Al igual que los arrays son colecciones indexadas.
 * Las llaves de los arrays deben ser integer pero los hashes pueden tener cualquier objeto como llave.
 * Pueden contener diferentes tipos de elemento en el mismo array/hash.
@@ -303,7 +301,7 @@ h1. Hashes
 
 Consideremos un sistema de rating de libros:
 * Usamos valores numericos 0-5 para valorar un libro que hemos leido.
-* :not_rated va a representar un libro que aún no ha sido rated
+* @:not_rated@ va a representar un libro que aún no ha sido valorado.
 * Vamos a guardar los datos en un hash.
 
 Crea un hash y agregale algunos libros, por ejemplo:
@@ -320,7 +318,7 @@ Vamos a obtener el rating de un libro en particular con
 
 @books["Left Hand of Darkness"]@
 
-También podemos *setear* valores con
+También podemos *guardar* valores con
 
 @books["Only Revolutions"] = 3@
 
@@ -332,7 +330,7 @@ Y con @books@ vemos todo el hash
 
 Jueguen con el hash en irb
 
-h1. Probemos
+h1. Métodos
 
 @40.reverse@
 
@@ -340,20 +338,20 @@ Qué pasa?
 
 Ruby dijo @NoMethodError: undefined method `reverse' for 40:Fixnum@
 
-Significa que @reverse@ no es un metodo que podamos aplicar al número 40
+Significa que @reverse@ no es un método que podamos aplicar al número 40
 
-h1. Metodos
+h1. métodos
 
-Los metodos son invocados al enviarles un mensaje al objeto. El mensaje contiene el nombre del metodo asi como cualquier parametro que este necesite.
+Los métodos son invocados al enviarles un mensaje al objeto. El mensaje contiene el nombre del método asi como cualquier parametro que este necesite.
 
-Si quieren ver los metodos de un objeto pueden escribir @40.methods.sort@
+Si quieren ver los métodos de un objeto pueden escribir @40.methods.sort@
 
 
 h1. Objetos
 
 Nuevamente, todo lo que manipulas en Ruby es un objeto y los resultados de esas manipulaciones tambien son objetos. Cada objeto tiene un identificador único.
 
-Un objeto son los datos asi como tambien los metodos que se le puede aplicar.
+Un objeto son los datos asi como tambien los métodos que se le puede aplicar.
 
 Un objeto es una estructura con identidad, estado y un comportamiento definidos.
 
@@ -431,7 +429,7 @@ end
 
 h1. Clases & Métodos
 
-Estas definiciones de un metodo son equivalentes:
+Estas definiciones de un método son equivalentes:
 
 bc.. 
   def increment x
@@ -459,7 +457,7 @@ count.respond_to?(:increment)
 
 h1. Ejercicio
 
-Vamos a agregar un metodo @Counter.increment_by@ que tome un *argumento* por el cual incrementar el contador.
+Vamos a agregar un método @Counter.increment_by@ que tome un *argumento* por el cual incrementar el contador.
 
 No hay que empezar desde cero; podemos sólo *abrir* la clase
 
@@ -481,7 +479,7 @@ c.value
 
 h1. Clases
 
-También se puede agregar metodos a clases ya existentes:
+También se puede agregar métodos a clases ya existentes:
 
 bc. class String
   def chicken?
@@ -492,7 +490,7 @@ end
 bc. "chicken".chicken?
 "puppy".chicken?
 
-@self@ es una forma de referirse al objeto del cual el metodo se esta llamando.
+@self@ es una forma de referirse al objeto del cual el método se esta llamando.
 
 En @"puppy".chicken?@, @self@ es @"puppy"@.
 
@@ -523,9 +521,9 @@ h1. Control de Acceso
 
 Ruby tiene tres niveles de protección para constantes y mteodos de clase y modulo.
 
-* private. Accesible para todo el mundo.
+* public. Accesible para todo el mundo.
 * protected. Puede ser sólo invocado por objetos la clase definida y sus subclases.
-* public. Puede ser solo llamado en una forma funcional (con un self implicito). Por lo tanto metodos privados solo pueden ser llamados en la clase definida y por los ancestros y descendientes de la clase, pero solo dentro del mismo objeto. 
+* private. Puede ser solo llamado en una forma funcional (con un self implicito). Por lo tanto métodos privados solo pueden ser llamados en la clase definida y por los ancestros y descendientes de la clase, pero solo dentro del mismo objeto. 
 
 h1. Testing
 
@@ -556,7 +554,7 @@ Escribir un test para increment_by.
 
 h1. Ejercicio
 
-Agregar un metodo a String que devuelva si un string es palindromo o no.
+Agregar un método a String que devuelva si un string es palindromo o no.
 
 Un palindromo es cualquier cadena de caracteres que se lea igual de adelante para atras que de atras para adelante.
 
@@ -567,7 +565,7 @@ bc. class String
 
 y terminarlo! Pruebenlo con @"abba".palindrome?@ y @"puppy".palindrome?@
 
-h1. Más sobre las clases built-in Ruby
+h1. Más sobre las clases nativas de Ruby
 
 "http://rubydoc.info/stdlib/core/":http://rubydoc.info/stdlib/core
 
@@ -575,7 +573,7 @@ Otras son: Array, Enumerable, Fixnum, Float, Hash, NilClass, String, Time
 
 h1. Bloques
 
-Algunos metodos también pueden tener asociados bloques como si fueran parametros.
+Algunos métodos también pueden tener asociados bloques como si fueran parametros.
 
 @list.each {|p| code}@ corre @code@ en cada elemento de @list@
 
@@ -588,7 +586,7 @@ list.each { |n| puts (n + 1) }
 ** @{ |v| v.palindrome? }@
 ** @{ |x, y| x * y }@
 ** Cuando es más de una linea 
-bc. do |arg|
+bc.. do |arg|
     code
   end
 
@@ -621,32 +619,32 @@ Se pueden usar bloques para implementar callbacks, para pasar pedazos de código
 Por ejemplo,
 
 bc. def call_block
-  puts "Comienzo del metodo"
+  puts "Comienzo del método"
   yield
   yield
-  puts "Fin del metodo"
+  puts "Fin del método"
 end
 
 @call_block { puts "En el bloque" }@ produce:
 
-bc. Comienzo del metodo
+bc. Comienzo del método
 En el bloque
 En el bloque
-Fin del metodo
+Fin del método
 
-yield invoca al bloque asociado con la llamada al metodo que lo contiene
+yield invoca al bloque asociado con la llamada al método que lo contiene
 
 h1. Lambdas y Procs
 
 Los bloques no son objetos pero pueden ser convertidos en objectos mediante la clase Proc.  Hay varias formas de convertir un bloque en un objeto Proc:
 
-* Pasando un bloque a un metodo cuyo último parametro es prefijado con un ampersand.
+* Pasando un bloque a un método cuyo último parametro es prefijado con un ampersand.
 
-bc. def metodo(p1, p2, &bloque)
+bc. def método(p1, p2, &bloque)
   puts bloque.inspect
 end
-metodo(1,2) { "un bloque" }
-metodo(3,4)
+método(1,2) { "un bloque" }
+método(3,4)
 
 * Llamando Proc.new
 
@@ -654,7 +652,7 @@ bc. Proc.new{ "un bloque" }
 
 h1. Lambdas y Procs
 
-* Llamando a el metodo Object#lambda asocia un bloque con la llamada lambda{ "un bloque" }
+* Llamando a el método Object#lambda asocia un bloque con la llamada lambda{ "un bloque" }
 
 * En 1.9 usando la sintaxis 
 
@@ -722,7 +720,7 @@ bc. my_hash.each_pair{|k,v| puts "key: #{k} con su valor #{v}"}
 
 h1. Expresiones Regulares
 
-* Ruby las tiene built-in en el lenguaje
+* Ruby las tiene nativo en el lenguaje
 * La sintaxis es /pattern/
 * Una expresión regular también es un objeto. Son instancias de la clase Regexp
 
@@ -758,19 +756,27 @@ h1. Introduccion a Rails
 
 * Rails es un framework para construir aplicaciones web 
 * Está estructurado usando una arquitectura llamada MVC: Model-View-Controller
-* MVC separa diferentes partes de la lógica de la aplicación en secciones en función de para que son usadas. En Rails esto está dividido en diferentes directorios.
-* Rails valora "convención sobre configuración"-- la plataforma toma ciertas assumptions de como vas a construir la aplicación. Esto hace que algunas las tareas que sigan sus convenciones sean muy sencillas y las que no sigan las convenciones de Rails lleven un poco más de trabajo.
+* MVC separa diferentes partes de la lógica de la aplicación en secciones en función de para que son usadas.
 
-h1. Un Apliación en Rails de Ejemplo
+h1. ¿Por qué Rails?
+
+* Convenciones sobre configuraciones
+** Crear una aplicación Web implica tomar muchas decisiones.
+** Rails tiene una opinión sobre cómo habria que desarrollar aplicaciones web. 
+** Esto hace que algunas las tareas que sigan sus convenciones sean muy sencillas (y las que no sigan las convenciones de Rails lleven un poco más de trabajo)
+
+* Comunidad y Herramientas
+Existe una comunidad muy activa entorno a Rails y podemos aprovecharla para consultar y usar las herramientas desarrolladas.
 
 Escribir en una consola:
 
 # @cd microrant@
 # @bundle install@
+# @rake db:migrate@
 # @rails server@
 # Abrir "http://localhost:3000":http://localhost:3000 en tu navegador
 
-h1. Microrant
+h1. Microrant - (micro quejas)
 
 * Twitter?
 * 10 caracteres para expresar tu ira
@@ -780,15 +786,30 @@ h1. Microrant
 ** Rants también pueden ser editados y borrados!
 
 * Qué hay detrás de escenas?
-** Rails trae clases que nos permiten obtener y maniuplar datos fácilmente
+** Rails trae clases que nos permiten obtener y manipular datos fácilmente
 ** La lógica de la aplicación se escribe en Ruby común y corrriente, y un modulo llamado ActiveRecord hace todo el trabajo de conexión a la base de datos
 
-h1. En el Backstage: la base de datos
+h1. En el Backstage
 
-* ORM: Mapeo de Objetos a Relaciones.
-* ActiveRecord
-* Soporta muchos motores de Bases de Datos
+Organización por defecto de Rails:
 
+h2. app/
+
+--> controllers/
+
+--> helpers/
+
+--> mails/
+
+--> models/
+
+--> views/
+
+h2. config/
+
+--> database.yml
+
+--> routes.rb
 
 h1. En La Consola
 
@@ -812,23 +833,28 @@ bc. r.message = "RANTING!"
 r.save
 
 Necesitamos guardar (@save@) los cambios luego que terminamos de editarlo.
+Tambien podemos modificar directamente con @update_attribute(:message, "RANTING")@. Si quieren ver mas métodos, consulten la documentación de Rails.
 
 h1. Donde Estan Mis Cosas
 
-Los modelos en Rails tienen metodos de busqueda incroporados que ayuda a obtener los registros desde la base de datos.
+Los modelos en Rails tienen métodos de busqueda incorporados que ayuda a obtener los registros desde la base de datos.
 
 * @Rant.all@
 * @Rant.order("created_at DESC")@
 * @Rant.first@
 * @Rant.where("user_id = 1")@
 * @Rant.where(:user_id => 1)@
+* @Rant.where(:user_id => 1).order("created_at DESC")@
+
+Observa la sentencia de SQL generado con el método @to_sql@
 
 h1. En La Consola
 
 Intentemos crear un nuevo Rant para @user_id@ 1
 
-bc. user = User.find(1)
-rant = user.rants.build
+bc. 
+rant = Rant.new
+rant.user = User.find(1)
 rant.message = "WHAT IS TH"
 rant.save
 
@@ -847,7 +873,7 @@ De esta forma no tenemos que usar save para guardar pues usamos @create@--quien 
 
 h1. Mirando a los Modelos
 
-Abrir los archivos user.rb y rant.rb en el directorio @model/@
+Abrir los archivos user.rb y rant.rb en el directorio @models/@
 
 bc.. class Rant < ActiveRecord::Base
   belongs_to :user
@@ -877,10 +903,7 @@ class Rant < ActiveRecord::Base
   def convert_message_to_uppercase
   ...
 
-h1. Ejercicios
-
 Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en "http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html":http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html y encuentren el helper que necesitan para este ejercicio.
-
 
 Una vez que lo hicieron prueben escribir un rant en minúsculas para ver qué pasa.
 Esta vez utilicen un método de Ruby? Miren en: "http://www.ruby-doc.org/core-1.9.2/String.html":http://www.ruby-doc.org/core-1.9.2/String.html y busquen si hay un método de instancia que permite pasar a minúsculas un String.
@@ -891,7 +914,7 @@ Pueden querer trabajar con sus datos en algún otro formato. Vuelvan a la consol
 
 Como era que se creaba un Hash?
 * Vimos @Hash.new@ pero también se puede crear con @{}@.
-* Try @new_hash = {}@
+* Intenta @new_hash = {}@
 
 El resultado debería ser algo como:
 
@@ -919,7 +942,7 @@ Rails automáticamente crea vistas con contenido usando el comando @scaffold@. M
 
 Estos archivos usan el sistema de templating llamado ERB que convierte líneas de Ruby en la vista en HTML estático para desplegar. Una línea típica de ERB podria ser como esto:
 
-@5 + 1 = <%= 5 + 1 %>@
+@5 + 1 = < %= 5 + 1 %>@
 
 Se vería así:
 
@@ -932,14 +955,14 @@ h1. Ejercicio 1 (ERB)
 El sistema de scaffolding es rápido de usar, pero no siempre lindo. Nuestra lista de rants tiene al @user_id@ para la persona que lo dijo pero no su nombre. Cambien eso.
 
 Ir a @/app/views/rants/@ y abran el archivo @index.html@. Por defecto, el scaffolder hace que la vista index muestre una lista de registros relacionados al tipo del modelo. Encuentren la línea que muestra el id del usuario y cámbienla para mostrar el nombre de usuario.
-`
+
 h1. Ejercicio 2 (ERB)
 
 Modifiquen el archivo @index.html@ de rants, para que muestre "No hay rants" en vez de la tabla, en caso de que no existan rants.
 
 h1. Ejercicio 3 (ERB)
 
-En la página @index@ de usuarios, agreguemos una columna a la tabla para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado @count@ que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo @User.count@ o @Rants.count@.
+En la página @index@ de usuarios, agreguemos una columna a la tabla para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un método llamado @count@ que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo @User.count@ o @Rants.count@.
 
 h1. Layouts
 
@@ -950,42 +973,52 @@ Ir a @app/views/layouts/application.html@
 * El método @yield@ pasa la ejecución al template que se quiere ver
 * En este caso el template que hemos estado viendo es @index.html@
 
-h2. Layouts Especificos
+h1. Layouts Especificos
 
 * Crear un archivo en @app/views/layouts/users.html@ y escribir:
+
 bc..
-<h1> Esto es solo para los Users </h1>
+<h1> Esto es solo para los Usuarios </h1>
 < %= yield %>
 
 
 * Ejemplo de convención sobre configuración
 
-h1. Routes
+
+h1. Rutas
 
 Como sabe Rails que a que página ir cuando visitas "http://localhost:3000/rants/new":http://localhost:3000/rants/new ?
 
+Rails primero busca las páginas estáticas en public/ y luego ejecutan las reglas
+
 Abrir /config/routes.rb para ver como funciona.
+
+h1. Rutas
+
+Observar la linea @resources :users@
+Ejecutar @rake routes@ y analizar que devuelve? Como se relaciona con la linea de @routes.rb@?
 
 h1. Nos falta la C de MVC
 
 Ahora que hemos visto y editado modelos y vistas, vamos a ir a mirar los archivos de controladores en nuestro proyecto.
 
 Qué hace un controlador?
-* Conecta la vista y el modelo, llamando a metodos en los modelos para obtener los datos necesitados en la vista y permitiendote acceder parametros de entrada como los de un formulario.
+* Conecta la vista y el modelo, llamando a métodos en los modelos para obtener los datos necesitados en la vista y permitiendote acceder parametros de entrada como los de un formulario.
 * Responde al request HTTP del navegador y renderea el tipo pedido de salida (en nuestros scaffolds es html o xml pero otros como json pueden ser facilmente agregandos -- API instantanea!)
 * También en el controlador es donde se deberia agregar los controles de acceso, como por ejemplo solo permitir que el usuario que escribio el rant pueda eliminarlo.
 
 
 h1. Ejercicio
 
-Modificar el código para: no permitir escribir de 3 rants por dia.
+Modificar el código para no permitir escribir más de 3 rants por dia.
 
 h1. Ejercicio - Solucion (Parte I)
 * Agregar el siguiente código en el @users_controller.rb@ de la carpeta @app/controllers@
-bc..
-  before_filter :authenticate, :only => [:new, :create]
 
-  def authenticate
+bc..
+  before_filter :no_quejarse_demasiado, :only => [:new, :create]
+
+  def no_quejarse_demasiado
     user = User.find(params[:id])
     if user.rants.where(created_at > 1.day.ago).count > 3
       redirect_to :index, :notice => "Has escrito demasiados rants hoy!"
@@ -993,10 +1026,11 @@ bc..
   end
 
 h1. Ejercicio - Solución (Parte II)
+
 En @app/views/layouts/application.html.erb@ agregar arriba de @yield@
 
 bc..
-  <p><%=  %></p>
+  <p>< %= flash[:notice] %></p>
 
 h1. Picando tu propio código
 
