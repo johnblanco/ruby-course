@@ -29,9 +29,13 @@ h1. Aprendiendo Ruby and Rails
 
 Buenos Días!
 
+__SKIP__
+  Algo que decir que quiere ser una nota privada.
+__END__
+
 h1. Presentaciones
 
-* Devchix : devchix@ y www.devchix.com
+* Devchix : @devchix y www.devchix.com
 * RailsBridge en la comunidad Ruby/Rails
 * PyStar en la comunidad Python
 * En Montevideo gente de Cubox, WyeWorks y Moove-it
@@ -96,7 +100,7 @@ h1. Instalando el ambiente de trabajo
 * Todos se sienten comodos manejando una terminal?
 * En linux ó Mac (tener el sistema actualizado e instalado curl y git)
 ** RVM: Te permite manejar multiples interpretes de Ruby en la misma máquina y fácilmente cambiar entre versiones.
-*** @bash < <( curl http://rvm.beginrescueend.com/releasesl/rvm-install-head )@
+*** @bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)@
 *** Seguir las instrucciones para agregar rvm al .bashrc
 *** @source $HOME/.rvm/scripts/rvm@
 *** @rvm notes@
@@ -933,6 +937,7 @@ El sistema de scaffolding es rápido de usar, pero no siempre lindo. Nuestra lis
 
 Ir a @/app/views/rants/@ y abran el archivo @index.html@. Por defecto, el scaffolder hace que la vista index muestre una lista de registros relacionados al tipo del modelo. Encuentren la línea que muestra el id del usuario y cámbienla para mostrar el nombre de usuario.
 `
+
 h1. Ejercicios
 
 En la página @index@ de usuarios, agreguemos una columna a la tabla para mostrar cuantos rants cada persona ha escrito. ActiveRecord hace que esto sea muy fácil con un metodo llamado @count@ que se puede enviar a una colección de registros para obtener el count de la base de datos en vez de todos los registros. Por ejemplo @User.count@ o @Rants.count@.
