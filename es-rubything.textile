@@ -104,10 +104,12 @@ h1. Instalando el ambiente de trabajo
 *** Seguir las instrucciones para agregar rvm al .bashrc
 *** @source $HOME/.rvm/scripts/rvm@
 *** @rvm notes@
-* En Windows hay que instalar primero Ruby
+* En Windows hay que instalar primero Ruby, a no ser que usen RailsInstaller que ya instala todo
 ** Ruby: Vamos a usar la version 1.9.2 y el interprete MRI
 *** Ir a http://rubyinstaller.org y descargar la versión de Ruby mediante el botón Download. 
 *** Ejecutarla y comenzar la intalación
+** Mediante Rails installer
+*** Ir a http://railsinstaller.org y descargar el paquete mediante el botón Download the kit. 
 
 h1. Instalando el ambiente de trabajo
 
