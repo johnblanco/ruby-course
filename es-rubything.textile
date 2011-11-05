@@ -901,8 +901,7 @@ Algunas personas están escribiendo rants en minúsculas!
 Vamos a escribir un método para convertir todos los rants a mayúsuculas. 
 Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.
 
-bc.. 
-class Rant < ActiveRecord::Base
+bc. class Rant < ActiveRecord::Base
   before_save :convert_message_to_uppercase
   def convert_message_to_uppercase
   ...
@@ -981,8 +980,7 @@ h1. Layouts Especificos
 
 * Crear un archivo en @app/views/layouts/users.html@ y escribir:
 
-bc..
-<h1> Esto es solo para los Usuarios </h1>
+bc. < h1> Esto es solo para los Usuarios < /h1>
 < %= yield %>
 
 

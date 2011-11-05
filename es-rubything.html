@@ -904,16 +904,13 @@ end</code></pre>
 <h1>Ejercicios</h1><p>Algunas personas están escribiendo rants en minúsculas!</p>
 <p>Vamos a escribir un método para convertir todos los rants a mayúsuculas. 
 Primero encuentren el archivo rant.rb en el directorio de modelos de Rails.</p>
-<pre><code>
-class Rant &lt; ActiveRecord::Base
+<pre><code>class Rant &lt; ActiveRecord::Base
   before_save :convert_message_to_uppercase
   def convert_message_to_uppercase
-  ...</code>
-
-<code>Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en "http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html":http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html y encuentren el helper que necesitan para este ejercicio.</code>
-
-<code>Una vez que lo hicieron prueben escribir un rant en minúsculas para ver qué pasa.
-Esta vez utilicen un método de Ruby? Miren en: "http://www.ruby-doc.org/core-1.9.2/String.html":http://www.ruby-doc.org/core-1.9.2/String.html y busquen si hay un método de instancia que permite pasar a minúsculas un String.</code></pre>
+  ...</code></pre>
+<p>Rails tiene muchas extensiones a las clases de Ruby para hacer que las tareas comunes sean sencillas. Miren en <a href="http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html">http://api.rubyonrails.org/classes/ActiveSupport/Multibyte/Chars.html</a> y encuentren el helper que necesitan para este ejercicio.</p>
+<p>Una vez que lo hicieron prueben escribir un rant en minúsculas para ver qué pasa.
+Esta vez utilicen un método de Ruby? Miren en: <a href="http://www.ruby-doc.org/core-1.9.2/String.html">http://www.ruby-doc.org/core-1.9.2/String.html</a> y busquen si hay un método de instancia que permite pasar a minúsculas un String.</p>
 
 </div>
 <div class='slide '>
@@ -976,11 +973,8 @@ before_validate :check_over_some_other_details</code></pre>
 <h1>Layouts Especificos</h1><ul>
 	<li>Crear un archivo en <code>app/views/layouts/users.html</code> y escribir:</li>
 </ul>
-<p>bc..
-
-</div>
-<div class='slide '>
-<h1> Esto es solo para los Usuarios </h1>&lt; %= yield %&gt;</p>
+<pre><code>&lt; h1&gt; Esto es solo para los Usuarios &lt; /h1&gt;
+&lt; %= yield %&gt;</code></pre>
 <ul>
 	<li>Ejemplo de convención sobre configuración</li>
 </ul>
