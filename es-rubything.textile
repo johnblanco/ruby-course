@@ -25,32 +25,30 @@ table td {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Start Presentation
 
-h1. Aprendiendo Ruby and Rails
-
-Buenos Días!
-
-__SKIP__
-  Algo que decir que quiere ser una nota privada.
-__END__
-
 h1. Presentaciones
 
 * Devchix : @devchix y www.devchix.com
 * RailsBridge en la comunidad Ruby/Rails
-* PyStar en la comunidad Python
-* En Montevideo gente de Cubox, WyeWorks y Moove-it
+* En Montevideo gente/empresas involucradas en la organizacion del taller
 
-h1. Agenda del Día
+h1. Agenda
+
+h2. Sabado
 
 * 9:00 *Presentaciones*
-* 9:30 - 13:00 *Instalación del ambiente de trabajo*
-* 10:30 -11:30 *Introducción a Ruby*
-* 11:30 -12:00 *Ruby Koans*
-* 12:00 -1:00 *Almuerzo*
-* 1:00 - *Rails parte 1*
-* 2:45 -3:00 *Descanso*
-* 3:00 -4:30 *Rails parte 2*
+* 9:30 *Instalación del ambiente de trabajo*
+* 11:00 *Introducción a Ruby*
+* 11:30 *Ruby Koans*
+* 12:00 *Recreo*
+* 1:00 Rails parte 1*
+* 2:45 *Descanso*
+* 3:00 *Rails parte 2*
 * 4:30 *Y ahora? Contribuyendo con Rails*
+
+h2. Domingo
+
+
+
 
 h1. Qué Temas Vamos a Cubrir?
 
