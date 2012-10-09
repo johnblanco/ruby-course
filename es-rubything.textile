@@ -156,38 +156,17 @@ h1. Datos Básicos de Ruby
 En Ruby __casi todo__ es un objeto. A un objeto se le puede enviar los mensajes a los que el objeto puede responder. A grandes rasgos a esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
 Juega con la terminal!
 
-% Esto no está muy claro <<--- MIRAR COMO INCLUIR LA EIGENCLASS
-% Las estructuras de control no son objetos ni mensajes que se envian a otros objetos, por eso la aclaracion de __casi todo__, en algún que otro lenguaje esto si se cumple.
-% La definicion de Duck Typing no es "El tipo del objeto es definido por lo que el objeto puede hacer".
-% Duck Typing indica que a un objeto le podemos enviar los mensajes a los que el objeto puede responder, sin importar el tipo del objeto. Comunmente se dice: "Si camina como un pato y habla como un pato, entonces es un pato"
-% Si por tipo del objeto entendemos "Lo que el objeto puede hacer", entonces cabe la pregunta "Que es lo que puede hacer el objeto?", la respuesta sería: "Todo lo que hace es recibir mensajes, los mensajes que puede recibir estan determinados por los métodos del objeto". Quién determina los métodos del objeto? La clase del objeto.
-
-% Cuál es la clase de un objeto? Depende, puede ser la clase a partir de la cual se creó el objeto, o la clase Singleton del objeto (clase Eigen, es una clase anónima). 
-% O sea que el tipo de un objeto es la clase del objeto.
-
-% Ejemplos:
-
-% bc. irb> names = ['jessie', 'john']
-% irb> numbers = [1, 2, 3, 4]
-% irb> def numbers.multiply
-% irb>   inject(:*)
-% irb> end
-
-% La clase de @names@ es @Array@ y no contiene el método @multiply@
-% La clase de @numbers@ es una clase @Singleton@, única al objeto, que contiene la definición del método @multiply@.
-
-
 h1. Datos Básicos en Ruby
 
 * En Java @min = Math.abs(num)@
 * En Ruby @postive = num.abs@ 
 
 * En C @strlen(name)@
-* En Ruby @name.lenght@
+* En Ruby @name.length@
 
-Le enviamos un mensaje al propio objeto. Y lo mismo aplica a toods los objetos en Ruby.
+Le enviamos un mensaje al propio objeto. Y lo mismo aplica a todos los objetos en Ruby.
 
-En Ruby, NIL es un objeto que representa ausencia de valor.
+En Ruby, nil es un objeto que representa ausencia de valor.
 
 h1. Operaciones basicas en ruby
 
@@ -236,7 +215,7 @@ awesome_list.sort!
 awesome_list
 
 Como paso esto? Acciones que terminen con un @!@ "cambian" los datos!
-Esto es una convención de Ruby, pero una buena a seguir.
+Esto es tan solo una convención de Ruby, pero una buena a seguir.
 
 h1. Convenciones para Variables y Alcance
 
@@ -251,7 +230,7 @@ Hay tres lugares donde el alcance cambia: las definiciones de clases (@class@), 
 
 h1. Símbolos
 
-Son etiquetas que no hay que pre-declarar y que son únicas. Empieza con @:@ y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el símbolo va a tener el mismo valor. Son usualmente usados como llaves de un hash.
+Son etiquetas que no hay que pre-declarar y que son únicas. Empieza con @:@ y es seguido por un nombre. Ruby garantiza que en cualquier parte del programa en donde aparezca el símbolo va a tener el mismo valor. Son usualmente usados como claves de un hash.
 
 Por ejemplo:
 
@@ -262,7 +241,7 @@ h1. Hashes
 
 * También es un tipo nativo del lenguaje. 
 * Al igual que los arrays son colecciones indexadas.
-* Las llaves de los arrays deben ser integer pero los hashes pueden tener cualquier objeto como llave.
+* Las claves de los arrays deben ser integer pero los hashes pueden tener cualquier objeto como clave.
 * Pueden contener diferentes tipos de elemento en el mismo array/hash.
 * Por defecto el valor para nil en un hash es false. Se puede cambiar al crear el hash.
 * En Ruby 1.9 se introduce un nuevo sintaxis para hashes
@@ -308,7 +287,7 @@ Agregamos un libro de la misma forma
 
 Y con @books@ vemos todo el hash
 
-Jueguen con el hash en irb
+Jueguen con el hash en irb! Ver: http://www.ruby-doc.org/core-1.9.3/Hash.html
 
 h1. Métodos
 
