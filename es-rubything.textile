@@ -11,10 +11,10 @@ h2. Sabado
 * 9:00  *Presentaciones*
 * 9:30  *Instalación del ambiente de trabajo*
 * 11:00 *Introducción a Ruby*
-* 11:30 *Ruby Koans*
-* 12:00 *Recreo*
-* 13:00 *Introducción a rails*
-* 14:00 *Empezamos a desarrollar microrants*
+* 12:30 *Ruby Koans*
+* 13:00 *Recreo*
+* 13:30 *Introducción a rails*
+* 15:00 *Empezamos a desarrollar microrants*
 * 16:00 *Terminamos por hoy*
 
 h2. Domingo
