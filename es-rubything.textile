@@ -368,7 +368,6 @@ c.value
 
 @initialize@ le da instrucciones a @new@ de como crear un objeto
 
-% Step 2 %
 
 h1. Clases & Métodos
 
