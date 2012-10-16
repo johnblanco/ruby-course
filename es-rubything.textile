@@ -187,7 +187,7 @@ Algo que Ruby hace con strings entre comillas dobles es interpolacion de expresi
 
 Por ejemplo, prueba
 
-bc. @"Nuestro array es #{[1,2,3]}"@
+bc. "Nuestro array es #{[1,2,3]}"
 
 Ó
 
@@ -249,7 +249,7 @@ h1. Hashes
 bc. frutas_color = {
   naranja:  "naranja",
   frutilla: "rojo",
-  banana:   "amarillo
+  banana:   "amarillo"
 }
 
 @frutas_color[:frutilla]@ produce @"rojo"@
@@ -330,7 +330,6 @@ p. Qué podemos hacer con @Counter@?
 
 @c = Counter.new@
 
-% Step 1 %
 
 h1. Clases & Métodos
 
@@ -419,8 +418,6 @@ Vamos a agregar un método @Counter.increment_by@ que tome un *argumento* por el
 
 No hay que empezar desde cero; podemos sólo *abrir* la clase
 
-% Sería bueno aclarar que abrir una clase es una mala práctica, que si bien es útil y rapido en algunos casos, existen otras prácticas mejores para agregar nuevo comportamiento a una clase.
-
 bc.. class Counter
 
 def increment_by(n)
@@ -468,6 +465,7 @@ bc. class Counter
   def increment_by(n)
     @value = @value + n
   end
+end
 
 En la consola: @require 'path_to_your_file'@
 
