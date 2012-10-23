@@ -494,15 +494,28 @@ h1. Testing
 
 Ahora escribiremos una clase para testearlo automáticamente.
 
-bc. require 'test/unit'
-  require 'counter'
-  class TestCounter < Test::Unit::TestCase
-    def test_increment
-      assert_equal(1, Counter.new().increment())
-    end
-  end
+bc. require './counter'
 
-Escribanlo en un archivo test_counter.rb y ejecutenlo.
+describe Counter do 
+	it "should start with 0" do
+		counter = Counter.new
+		counter.value.should == 0
+	end
+	
+	it "should add 1 each time increment is called" do
+		counter = Counter.new
+		counter.increment
+		counter.value.should == 1
+	end
+	
+	it "should add the amount specified in increment_by" do
+		counter = Counter.new
+		counter.increment_by 5
+		counter.value.should == 5
+	end
+end
+
+Escribanlo en un archivo counter_spec.rb y ejecuten rspec counter_spec.rb
 
 Nota: Funciona para ruby 1.8.7
 
