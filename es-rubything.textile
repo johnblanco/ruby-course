@@ -492,23 +492,19 @@ Automatizar cualquier tarea que se pueda hacer más de una vez es una sabia deci
 
 h1. Testing
 
-Ahora escribiremos una clase para testearlo automáticamente.
+Ahora usaremos rspec para escribir las pruebas de la clase Counter
 
-bc..
-require './counter'
-
+bc. require './counter'
 describe Counter do 
   it "should start with 0" do
     counter = Counter.new
     counter.value.should == 0
   end
-
   it "should add 1 each time increment is called" do
     counter = Counter.new
     counter.increment
     counter.value.should == 1
-  end
-	
+  end	
   it "should add the amount specified in increment_by" do
     pending("Not done yet")
   end
@@ -527,7 +523,7 @@ Agregar un método a String que devuelva si un string es palindromo o no.
 
 Un palindromo es cualquier cadena de caracteres que se lea igual de adelante para atras que de atras para adelante.
 
-Para empezar tipear lo siguiente en la linea de comandos:
+Para empezar escribir lo siguiente en la linea de comandos:
 
 bc. class String
   def palindrome?
@@ -536,9 +532,13 @@ y terminarlo! Pruebenlo con @"abba".palindrome?@ y @"puppy".palindrome?@
 
 h1. Más sobre las clases nativas de Ruby
 
-"http://rubydoc.info/stdlib/core/":http://rubydoc.info/stdlib/core
+"Array":http://www.ruby-doc.org/core-1.9.3/Array.html
+"Fixnum":http://www.ruby-doc.org/core-1.9.3/Fixnum.html
+"Hash":http://www.ruby-doc.org/core-1.9.3/Hash.html
+"String":http://www.ruby-doc.org/core-1.9.3/String.html
+"Time":http://www.ruby-doc.org/core-1.9.3/Time.html
 
-Otras son: Array, Enumerable, Fixnum, Float, Hash, NilClass, String, Time
+Otras interesantes de estudiar: Enumerable, Float, NilClass, Class
 
 h1. Bloques
 
