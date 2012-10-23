@@ -496,7 +496,7 @@ Ahora escribiremos una clase para testearlo automáticamente.
 
 bc. require './counter'
 
-describe Counter do 
+  describe Counter do 
 	it "should start with 0" do
 		counter = Counter.new
 		counter.value.should == 0
@@ -509,15 +509,12 @@ describe Counter do
 	end
 	
 	it "should add the amount specified in increment_by" do
-		counter = Counter.new
-		counter.increment_by 5
-		counter.value.should == 5
+		pending("Not done yet")
 	end
-end
+  end
 
 Escribanlo en un archivo counter_spec.rb y ejecuten rspec counter_spec.rb
 
-Nota: Funciona para ruby 1.8.7
 
 h1. Ejercicio
 
