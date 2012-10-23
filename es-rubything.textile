@@ -511,7 +511,7 @@ bc. require './counter'
 	it "should add the amount specified in increment_by" do
 		pending("Not done yet")
 	end
-  end
+end
 
 Escribanlo en un archivo counter_spec.rb y ejecuten rspec counter_spec.rb
 
