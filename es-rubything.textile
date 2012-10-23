@@ -1,4 +1,4 @@
-h1. Presentaciones
+fh1. Presentaciones
 
 * Devchix : @devchix y www.devchix.com
 * RailsBridge en la comunidad Ruby/Rails
@@ -494,23 +494,24 @@ h1. Testing
 
 Ahora escribiremos una clase para testearlo automáticamente.
 
-bc. require './counter'
+bc..
+require './counter'
 
-  describe Counter do 
-	it "should start with 0" do
-		counter = Counter.new
-		counter.value.should == 0
-	end
+describe Counter do 
+  it "should start with 0" do
+    counter = Counter.new
+    counter.value.should == 0
+  end
+
+  it "should add 1 each time increment is called" do
+    counter = Counter.new
+    counter.increment
+    counter.value.should == 1
+  end
 	
-	it "should add 1 each time increment is called" do
-		counter = Counter.new
-		counter.increment
-		counter.value.should == 1
-	end
-	
-	it "should add the amount specified in increment_by" do
-		pending("Not done yet")
-	end
+  it "should add the amount specified in increment_by" do
+    pending("Not done yet")
+  end
 end
 
 Escribanlo en un archivo counter_spec.rb y ejecuten rspec counter_spec.rb
