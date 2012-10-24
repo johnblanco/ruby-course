@@ -52,7 +52,8 @@ h1. Ruby
 ** Rubinius esta hecho en Ruby
 * Versiones
 ** 1.8.7
-** 1.9.2 <-- recomendada
+** 1.9.2
+** 1.9.3 <-- recomendada
 
 h1. Porque Ruby?
 
@@ -68,10 +69,7 @@ h1. Instalando el ambiente de trabajo
 * Todos se sienten comodos manejando una terminal?
 * En linux ó Mac (tener el sistema actualizado e instalado curl y git)
 ** RVM: Te permite manejar multiples interpretes de Ruby en la misma máquina y fácilmente cambiar entre versiones.
-*** @bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)@
-*** Seguir las instrucciones para agregar rvm al .bashrc
-*** @source $HOME/.rvm/scripts/rvm@
-*** @rvm notes@
+*** @\curl -L https://get.rvm.io | bash -s stable --ruby@
 * En Windows hay que instalar primero Ruby, a no ser que usen RailsInstaller que ya instala todo
 ** Ruby: Vamos a usar la version 1.9.2 y el interprete MRI
 *** Ir a http://rubyinstaller.org y descargar la versión de Ruby mediante el botón Download. 
@@ -82,8 +80,8 @@ h1. Instalando el ambiente de trabajo
 h1. Instalando el ambiente de trabajo
 
 * En Linux ó Mac
-** Ruby: para este taller usaremos mri y la versión 1.9.2
-*** @rvm install 1.9.2@
+** Ruby: para este taller usaremos mri y la versión 1.9.3
+*** @rvm install 1.9.3@
 *** mirar rvm help para ver que más se puede hacer
 
 h1. Instalando el ambiente de trabajo
@@ -96,7 +94,7 @@ h1. Instalando el ambiente de trabajo
 *** En una terminal
 **** @pik add@
 **** @pik list@
-**** @pik use 192@
+**** @pik use 193@
 **** @ruby -v@
 ** Ó Ruby Installer: Un ejecutable que instala Ruby y Ruby Gems 
 *** Descargar la ultima verisón de http://rubyinstaller.org
@@ -138,8 +136,6 @@ irb tiene un historial de comandos. Usen las flechitas para navegarlo.
 
 h1. Datos Básicos de Ruby
 
-% TODO more table
-
 |Integers| @1@, @2@, @3@ |
 |Strings | @"chicken"@ |
 |Booleans| @true@, @false@ |
@@ -149,8 +145,6 @@ h1. Datos Básicos de Ruby
 
 En Ruby __casi todo__ es un objeto. A un objeto se le puede enviar los mensajes a los que el objeto puede responder. A grandes rasgos a esto le llamamos "duck typing". Si un objeto camina como un pato y habla como un pato, entonces el interprete lo trata como un pato.
 Juega con la terminal!
-
-h1. Datos Básicos en Ruby
 
 * En Java @min = Math.abs(num)@
 * En Ruby @postive = num.abs@ 
@@ -200,8 +194,6 @@ thing.reverse
 thing
 thing = thing.reverse
 
-h1. Variables
-
 Intenten.
 
 bc. awesome_list = [5,2,1,8]
@@ -250,8 +242,6 @@ bc. frutas_color = {
 
 También conocidos como Map, Associative Array, Dictionary, Key/Value Pair Store
 
-h1. Hashes
-
 Consideremos un sistema de rating de libros:
 * Usamos valores numericos 0-5 para valorar un libro que hemos leido.
 * @:not_rated@ va a representar un libro que aún no ha sido valorado.
@@ -265,7 +255,6 @@ bc. books = { "Left Hand of Darkness"        => 5,
               "Only Revolutions"             => :not_rated 
 	    }
 
-h1. Hashes
 
 Vamos a obtener el rating de un libro en particular con
 
@@ -292,8 +281,6 @@ Qué pasa?
 Ruby dijo @NoMethodError: undefined method `reverse' for 40:Fixnum@
 
 Significa que @reverse@ no es un método que podamos aplicar al número 40
-
-h1. métodos
 
 Los métodos son invocados al enviarles un mensaje al objeto. El mensaje contiene el nombre del método asi como cualquier parametro que este necesite.
 
@@ -325,8 +312,6 @@ p. Qué podemos hacer con @Counter@?
 @c = Counter.new@
 
 
-h1. Clases & Métodos
-
 Aprendemos la sintaxis mediante un ejemplo:
 
 bc.. class Counter
@@ -342,9 +327,7 @@ c.value
 
 Qué pasa? Que es lo que hace @attr_accessor :value@ ?
 
-h1. Clases & Métodos
-
-Aprendemos la sintaxis mediante un ejemplo:
+Implementemos algunos metodos en la clase
 
 bc.. class Counter
   attr_accessor :value
@@ -361,10 +344,7 @@ c.value
 
 @initialize@ le da instrucciones a @new@ de como crear un objeto
 
-
-h1. Clases & Métodos
-
-Aprendamos la sintaxis mediante un ejemplo:
+Ahora agregamos el método increment
 
 bc.. class Counter
   attr_accessor :value
@@ -377,8 +357,6 @@ bc.. class Counter
     @value = @value + 1
   end
 end
-
-h1. Clases & Métodos
 
 Estas definiciones de un método son equivalentes:
 
@@ -393,7 +371,7 @@ bc..
 
   def increment(x); x + 1; end
 
-h1. Clases
+h1. Objetos
 
 Usemos nuestra clase Counter:
 
@@ -426,8 +404,6 @@ bc. c = Counter.new
 c.increment_by(5)
 c.value
 
-h1. Clases
-
 También se puede agregar métodos a clases ya existentes:
 
 bc. class String
@@ -443,10 +419,7 @@ bc. "chicken".chicken?
 
 En @"puppy".chicken?@, @self@ es @"puppy"@.
 
-
-h1. Clases
-
-Si aún no lo han hecho, escriban la clase Counter en su editor favorito y guardenlo en disco. Levantemoslo en la consola de ruby.
+Si aún no lo han hecho, escriban la clase Counter en su editor favorito y guardenlo en disco como counter.rb
 
 bc. class Counter
   attr_accessor :value
@@ -461,7 +434,7 @@ bc. class Counter
   end
 end
 
-En la consola: @require 'path_to_your_file'@
+En la consola: @require './counter'@
 
 h1. Modulos
 
