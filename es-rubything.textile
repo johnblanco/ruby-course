@@ -441,7 +441,7 @@ h1. Modulos
 Es una contenedor de metodos y constantes. No puede ser instanciado. Ejemplo modulo Math.
 
 bc. Math::PI #3.141592653589793
-bc. Math.exp(1) #2.718281828459045
+Math.exp(1) #2.718281828459045
 
 h1. Control de Acceso
 
@@ -460,7 +460,6 @@ Automatizar cualquier tarea que se pueda hacer más de una vez es una sabia deci
 * el código se hace más mantenible
 * más productividad a largo plazo sobre la aplicación
 
-h1. Testing
 
 Ahora usaremos rspec para escribir las pruebas de la clase Counter
 
@@ -529,7 +528,12 @@ bc.. do |arg|
     code
   end
 
-h1. Bloques
+Si queremos imprimir los elementos de un array 
+
+bc. arr = [4,6,3]
+  arr.each do |item|
+    puts item
+  end
 
 Para nuestro ejemplo de los libros.
 
