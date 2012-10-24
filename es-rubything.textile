@@ -1,9 +1,3 @@
-fh1. Presentaciones
-
-* Devchix : @devchix y www.devchix.com
-* RailsBridge en la comunidad Ruby/Rails
-* En Montevideo gente/empresas involucradas en la organizacion del taller
-
 h1. Agenda
 
 h2. Sabado
