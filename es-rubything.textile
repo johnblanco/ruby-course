@@ -438,7 +438,10 @@ En la consola: @require './counter'@
 
 h1. Modulos
 
-Un módulo es básicamente una clase que no puede ser instanciada. 
+Es una contenedor de metodos y constantes. No puede ser instanciado. Ejemplo modulo Math.
+
+bc. Math::PI #3.141592653589793
+bc. Math.exp(1) #2.718281828459045
 
 h1. Control de Acceso
 
