@@ -77,14 +77,10 @@ h1. Instalando el ambiente de trabajo
 ** Mediante Rails installer
 *** Ir a http://railsinstaller.org y descargar el paquete mediante el botón Download the kit. 
 
-h1. Instalando el ambiente de trabajo
-
 * En Linux ó Mac
 ** Ruby: para este taller usaremos mri y la versión 1.9.3
 *** @rvm install 1.9.3@
 *** mirar rvm help para ver que más se puede hacer
-
-h1. Instalando el ambiente de trabajo
 
 * En Windows
 ** PIK: Te permite manejar multiples interpretes de Ruby en la misma máquina y fácilmente cambiar entre versiones.
@@ -101,7 +97,6 @@ h1. Instalando el ambiente de trabajo
 *** Seguir los pasos de la instalación
 *** Instalar pik mediante @gem install pik
 
-h1. Instalando el ambiente de trabajo
 
 * Instalar Ruby Gems
 ** En Linux
